@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Share";
+}
+
+<h2>Share</h2>
+
+<form method="post" action="\File\Share" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <div class="form-group">
+        
+            <label class="control-label col-md-2" for="recepient">Share With: </label>
+         
+            <div class="col-md-10">
+                <input type="text" id="recepient" name="recepient" class="form-control">
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Share" class="btn btn-success" />
+            </div>
+        </div>
+
+
+ 
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger">
+                @ViewBag.Error
+            </div>
+        }
+
+        @if (ViewBag.ShareSucc != null)
+        {
+            <div class="alert alert-success">
+                @ViewBag.ShareSucc
+            </div>
+        }
+  
+
+    </div>
+
+
+
+
+</form>
+
+<div>
+    @Html.ActionLink("Back to your Files", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

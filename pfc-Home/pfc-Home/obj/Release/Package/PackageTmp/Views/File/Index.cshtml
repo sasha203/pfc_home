@@ -1,0 +1,50 @@
+﻿@model IEnumerable<pfc_Home.Models.File>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h3>@User.Identity.Name Files</h3>
+<hr/>
+
+<p>
+    @Html.ActionLink("Upload File", "Create")
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.FileTitle)
+        </th>
+
+        <th><span class="glyphicon glyphicon-cloud-download ctr1"></span></th>
+
+        <th><span class="glyphicon glyphicon-share ctr2"></span></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.FileTitle)
+        </td>
+
+        <td>
+            <a class="btn btn-primary" onclick="location.href='@Url.Action("DownloadFile", "File", new { link = Html.DisplayFor(modelItem => item.Link) })'">Download</a>
+        </td>
+
+        <td>
+            @Html.ActionLink("Share", "Share", "file", new { ftitle = item.FileTitle} , new { @class = "btn btn-success"})
+        </td>
+
+      
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </td>
+       
+    </tr>
+}
+
+</table>

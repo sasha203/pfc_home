@@ -1,0 +1,62 @@
+﻿@model pfc_Home.Models.File
+
+@{
+    ViewBag.Title = "Create";
+}
+<h2>Upload File</h2>
+
+<form method="post" action="\File\Create" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FileTitle, htmlAttributes: new { @class = "control-label col-md-2" }, labelText: "File Title")
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FileTitle, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FileTitle, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">File</label>
+            <div class="col-md-10">
+                <input type="file" name="file" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Upload" class="btn btn-primary" />
+            </div>
+        </div>
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger">
+                @ViewBag.Error
+            </div>
+        }
+
+        @if (ViewBag.UploadSucc != null)
+        {
+            <div class="alert alert-success">
+                @ViewBag.UploadSucc
+            </div>
+        }
+
+
+    </div>
+
+
+
+
+</form>
+
+<div>
+    @Html.ActionLink("Back to your Files", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
