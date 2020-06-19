@@ -3,7 +3,6 @@
 ### SQL (PostgreSQL server) ###
 
 * instanceID: main-server
-* pass: 1234
 
 * Location: us-west1
 * Zone: any 
@@ -22,14 +21,6 @@
 	
 
 
-	
-### This user is used to access db from datagrip ###
-
-* user: sasha
-* pass: 1234
-
-
-
 ### Bucket for files ###
 
 * Name: pfc-file-bucket
@@ -46,12 +37,6 @@
 * protocol: Redis
 
 
-
-### Dummy Gmail Account Credentials for email ###
-* user: noreply.pfc.sa@gmail.com
-* pass: passForpfc1234
-
-
 ### Key ring ###
 * key ring name: pfc-keyring
 * key ring location: us-west1
@@ -65,9 +50,3 @@
 
 ### CronJobs###
 https://www.setcronjob.com/signup
-
-
-
-
-
-
